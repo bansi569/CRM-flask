@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+<head>
+  {% block head %}
+     {{ super()}}
+  {% endblock %}
+</head>
+<body>
+{% block body %}
+<div class="container">
+ <form action="/place_order" method="post">
+
+<div>
+   <input type="textrea"  rows="1" cols="5" name="ref" value="welcome {{the_custname}}" />
+ </div>
+         
+   <h2>productlist</h2>
+   <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="50">product</th>
+        <th width="300">description</th>
+        <th width="50">placeorder</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>pulse</td>
+        <input type="hidden" name="prod1" value="pulse" />
+        <td>maximum of 2devices can be installed</td>
+        <td><button type="submit" class="btn btn-primary" name="pls" value="orderpulse">orderpulse</button></td>
+      </tr>
+      <tr>
+        <td>pulsetetra</td>
+        <input type="hidden" name="prod2" value="pulsetetra" />
+        <td>maximum of 4devices can be installed</td>
+        <td><button type="submit" class="btn btn-primary" name="pls" value="orderpulsetetra">orderpulsetetra</button></td>
+      </tr>
+      <tr>
+        <td>pulsehexa</td>
+        <input type="hidden" name="prod3" value="pulsehexa" />
+        <td>maximum of 6devices can be installed</td>
+        <td><button type="submit" class="btn btn-primary" name="pls" value="orderhexa">orderhexa</button></td>
+      </tr>
+    </tbody>
+  </table>
+    <button type="submit" class="btn btn-primary" name="pls" value="complain">complain</button>
+</form>
+</div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+<head>
+  {% block head %}
+     {{ super()}}
+  {% endblock %}
+</head>
+<body>
+{% block body %}
+<div class="container">
+  <h2>profilepage</h2>
+   <form action="/button_click" method="post">        
+  <table class="table table-striped" id="mytable">
+    <thead>
+      <tr>
+        <th>s.no</th>
+        <th>name</th>
+        <th>productpurchased</th>
+        <th>email</th>
+        <th>purchasedate</th>
+        <th>survey</th>
+        <th>status</th>
+      </tr>
+    </thead>
+   <tbody>
+     {% set count = 0 %}
+     {% for log_row in the_data %} 
+         
+         {% set count=count+1 %}
+        <tr>
+           {% for item in log_row %}
+                 <td>{{item}}</td>
+                      
+           {% endfor %}
+         
+        
+         <td><button type="submit" class="btn btn-primary" name="btn" value="survey">survey</button></td>
+         
+            <td><button type="submit" class="btn btn-primary" name="btn" value="{{the_status}}"> {{log_row[0]}} {{log_row[1]}}</button></td>
+         
+         <td><input type="hidden" name="cust" value="{{log_row[1]}}" /></td>
+         <td><input type="hidden" name="proid" value="{{log_row[0]}}" /></td>
+        </tr>
+     {% endfor %}
+   </tbody>
+    
+  </table>
+</form>
+</div>
+{% endblock %}
+</body>

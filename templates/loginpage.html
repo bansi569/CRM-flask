@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+<head>
+  {% block head %}
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+     
+     <script>
+       function redirect(){
+             window.open('D:\webapp\templates\register.html');
+         }
+     </script>
+     
+        
+  {% endblock %}
+</head>
+{% block body %}
+
+
+
+<div class="container" >
+  <h2>user login page</h2>
+  <form action="/search4" method="post">
+    <div class="form-group">
+      <label for="uid">User Name:</label>
+      <input type="text" class="form-control"  placeholder="Enter Username" name="usr1">
+    </div>
+    
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" width="30px" placeholder="Enter password" name="pwd1">
+    </div>
+    
+    <button type="submit" class="btn btn-primary" name="enter" value="login">login</button>
+    <input type="submit" class="btn btn-primary" onclick="redirect()" name="enter" value="register">
+
+  </form>
+<div>
+<p id="set">{{the_notfi}}</p>
+</div>
+
+</div>
+<script>
+         setTimeout(function(){
+                var ele=document.getElementById("set").innerHTML='';},3000);
+        }
+     </script>
+{% endblock %}
+

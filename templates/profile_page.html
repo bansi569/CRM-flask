@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+<head>
+  {% block head %}
+     {{ super()}}
+  {% endblock %}
+</head>
+<body>
+{% block body %}
+<div class="container">
+  <h2>profilepage</h2>
+   <form action="/redirect_survey" method="post">        
+  <table class="table table-striped" id="mytable">
+    <thead>
+      <tr>
+        <th>s.no</th>
+        <th>name</th>
+        <th>email</th>
+        <th>phonenum</th>
+        <th>status</th>
+      </tr>
+    </thead>
+   <tbody>
+     {% set count = 0 %}
+     {% set icount=0 %}
+     {% for log_row in the_data %} 
+         
+         {% set count=loop.index0 %}
+         {% set icount=loop.index0 %}
+        <tr>
+           {% for item in log_row %}
+                 <td>{{item}}</td>
+                      
+           {% endfor %}
+         
+        
+         <td><button type="submit" class="btn btn-primary" name="btn" value="btn{{count}}">{{the_status}}</button</td>
+         <td><input type="hidden" name="hid{{count}}" value="{{log_row[0]}}" /></td>
+         
+         </tr>
+         
+     {% endfor %}
+
+   </tbody>
+    
+  </table>
+   <input type="hidden" name="hid" value="{{the_len}}" />       
+</form>
+</div>
+{% endblock %}
+</body>

@@ -1,0 +1,82 @@
+{% extends 'base.html'%}
+<head>
+  {% block head %}
+     {{ super()}}
+   <script>
+       
+        function settext(strnum,cnt){
+            var di=strnum;
+            var count="t"+cnt.toString();
+            var set=document.getElementById(di);
+            var val=set.value;
+            
+            var toset=document.getElementById(count);
+            toset.innerHTML=val;
+           var fstrnum=parseInt(strnum);
+            
+           var table=document.getElementById("comptable");
+           
+           alert(res);
+           var temp="txt"+strnum;
+           var hidtext=document.getElementById(temp);
+           hidtext.innerHTML=res;
+           toset.innerHTML=val;
+            
+ }
+
+     
+      
+  </script>
+  {% endblock %}
+</head>
+<body>
+{% block body %}
+{% set count=0 %}
+<div class="container">
+  <h2>register complain</h2>
+   <form action="/complain_type" method="get" />        
+  <table class="table table-striped" id="comptable">
+    <thead>
+      <tr>
+        <th>s.no</th>
+        <th>name</th>
+        <th>productpurchased</th>
+        <th>complaintypes</th> 
+        <th>chosen</th>       
+      </tr>
+    </thead>
+   <tbody>
+     
+     {% set count=0 %}
+     {% for log_row in the_data %} 
+        
+        {% set count=loop.index %}
+        <tr name="rw",value={{count}}>
+         <td>{{count}}</td>
+         <td><input type="text" name="cust" value="{{the_cust}}"/></td>
+           {% for item in log_row %}
+                 <td>{{item}}</td>
+                      
+           {% endfor %}
+         <td><div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><input type="button" class="btn btn-primary" id="1"  value="general service" onclick="settext(1,{{count}})"></li>
+      <li><input type="button" class="btn btn-primary" id="2" value="tech issue" onclick="settext(2)" /></li>
+      <li><input type="button" class="btn btn-primary" id="3"  value="other" onclick="settext(3)"/></li>
+    </ul>
+  </div></td>
+        <td><p id="{{'t'}}{{count}}"></p></td>
+        <td><button type="submit" class="btn btn-primary" name="btn" value="{{btn}}{{count}}">submit</button></td>
+        <td><input type="hidden" id="{{txt}}{{count}}" name="{{txt}}{{count}}" value="xyz"/></td>
+        </tr>
+     {% endfor %}
+   </tbody>
+    
+  </table>
+</form>
+</div>
+{% endblock %}
+</body>
+

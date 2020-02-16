@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamically Add Remove Table Rows in JavaScript</title>
+
+    <style>
+        table {
+            width: 70%;
+            font: 17px Calibri;
+        }
+        table, th, td {
+            border: solid 1px #DDD;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body onload="createTable()>
+    <p>enter no of rooms</p>
+    <div><input type="text id="txt" name="txt" value="" /></div>
+    
+    <!--THE CONTAINER WHERE WE'll ADD THE DYNAMIC TABLE-->
+    <div id="cont"></div>
+
+    <p><input type="button" id="bt" value="Submit Data" onclick="submit()" /></p>
+    
+</body>
+
+<script>
+  
+    var index=1;
+    var arrHead = new Array();
+    arrHead = ['s:no', 'roomname', 'total devices', 'devices name','start'];      // SIMPLY ADD OR REMOVE VALUES IN THE ARRAY FOR TABLE HEADERS.
+
+    // FIRST CREATE A TABLE STRUCTURE BY ADDING A FEW HEADERS AND
+    // ADD THE TABLE TO YOUR WEB PAGE.
+    function createTable() {
+        var empTable = document.createElement('table');
+        empTable.setAttribute('id', 'empTable');            // SET THE TABLE ID.
+        var len=(arrHead.length)-1;
+        var tr = empTable.insertRow(-1);
+
+        for (var h = 0; h < arrHead.length; h++) {
+            var th = document.createElement('th');          // TABLE HEADER.
+            th.innerHTML = arrHead[h];
+            tr.appendChild(th);
+              if(h==len){
+                   var th1=document.createElement('input');
+                       th1.setAttribute('type','button');
+                       th1.setAttribute('name','addroom');
+                       th1.setAttribute('onclick','addRow()');
+                       tr.appendChild(th1);
+                }
+            
+           
+        }
+
+        var div = document.getElementById('cont');
+        div.appendChild(empTable);    // ADD THE TABLE TO YOUR WEB PAGE.
+    }
+
+
+    // ADD A NEW ROW TO THE TABLE.s
+    function addRow() {
+        var empTab = document.getElementById('empTable');
+
+        var rowCnt = empTab.rows.length;        // GET TABLE ROW COUNT.
+        var tr = empTab.insertRow(rowCnt);      // TABLE ROW.
+        tr = empTab.insertRow(rowCnt);
+        var len=(arrHead.length)-1;
+        for (var c = 0; c < arrHead.length; c++) {
+            var td = document.createElement('td');          // TABLE DEFINITION.
+            td = tr.insertCell(c);
+               
+           
+               if (c == 2) {           
+                // ADD A BUTTON.
+               var chkbox=document.createElement('input');
+               chkbox.setAttribute('type','checkbox');
+               chkbox.setAttribute('name','box');
+               td.appendChild(chkbox);
+            }
+            else {
+                // CREATE AND ADD TEXTBOX IN EACH CELL.
+                var ele = document.createElement('input');
+                ele.setAttribute('type', 'text');
+                ele.setAttribute('value', '');
+
+                td.appendChild(ele);
+            }
+            if(c==len)
+              {
+                var btn=document.createElement('input');
+                btn.setAttribute('type' ,'button');
+                btn.setattribute('name','addroom');
+                btn.setAttribute('onclick','addRow()');
+               }
+         index++;
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+<head>
+{% block head %}
+ {{super()}}
+  
+{% endblock %}
+</head>
+<body>
+{% block body %}
+<div class="container" >
+  <h2>Admin page</h2>
+  <form action="/checkadmin"  method="post">
+    <div class="form-group">
+      <label for="uid">User Name:</label>
+      <input type="text" class="form-control" id="usr1" placeholder="Enter Username" name="usr">
+    </div>
+    
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" width="30px" id="pwd1" placeholder="Enter password" name="pwd">
+    </div>
+    
+    <button type="submit" class="btn btn-primary" name="enter" value="login">login</button>
+     <input type="submit" class="btn btn-primary" onclick="redirect()" name="enter" value="register" />
+
+    <div><p name="comment">{{the_comment}}</p></div>
+  </form>
+</div>
+{% endblock %}
+</body>
+

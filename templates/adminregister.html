@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+<head>
+  {% block head %}
+     {{ super()}}
+     <script> 
+	function validate(){
+		if(document.getElementById("usr").value == "" || document.getElementById("email").value == ""){
+			window.alert("Enter Email...!! or Enter Username..!");
+			return false;
+		}
+           return true;
+		}
+     </script>
+{% endblock %}
+</head>
+<body>
+{% block body %}
+<div class="container">
+  <h2>Registration form</h2>
+  <form action="/register_admin" onsubmit=" return validate()" method="post">
+    <div class="form-group">
+      <label for="uid">User Name:</label>
+      <input type="text" class="form-control" id="usr" placeholder="Enter Username" name="usr">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+    </div>
+     <div class="form-group">
+      <label for="phone">phone number:</label>
+      <input type="text" class="form-control" id="phone" placeholder="Enter phonenumber" name="phone">
+    </div>
+     
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+{% endblock %}
+

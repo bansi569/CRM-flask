@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+<head>
+  {% block head %}
+     {{ super()}}
+    
+{% endblock %}
+</head>
+<body>
+{% block body %}
+<div  class="container" >
+<h2>enqiry form</h2>
+
+<form action="/onsubmit_enquiry" method="post">
+<div><input type="hidden" name="pid" value="{{the_name}}" /></div>
+<div></div>
+<div></div>
+<p>enter number of rooms</p>
+<div><input type="text" name="txt" /></div> 
+<div></div>
+<div></div>
+<input type="submit" class="btn btn-primary" name="btn" value="next" />    
+      
+</form>
+</div>
+{% endblock %}
+</body>
+</html>

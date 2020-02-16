@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+<head>
+  {% block head %}
+     {{ super()}}
+    
+{% endblock %}
+</head>
+{% block body %}
+<div  class="container" >
+<h2>room and devices details</h2>
+
+<form action="/onsubmit_enquiryroom" method="post">
+   <input type="hidden" name="nme" value={{the_user}}/>
+  <table class="table table-striped" id="mytable">
+    <thead>
+      <tr>
+        <th>roomname</th>
+        <th>total devices</th>
+        <th>devices name</th>
+                
+      </tr>
+    </thead>
+   <tbody>
+    
+
+
+    {% for iter in range(0,the_count) %} 
+        
+        <tr>
+       
+         <td><input type="text" name="room{{iter}}" value=""/></td>
+         <td><input type="text" name="room1{{iter}}" value=""/></td>
+         <td><div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+         <li><input type="checkbox" name="chk{{iter}}" value="lights" />lights</li>
+         <li><input type="checkbox" name="chk{{iter}}" value="fan" />fan</li>
+           <li><input type="checkbox" name="chk{{iter}}" value="motor" />motor</li>
+      <li><input type="checkbox" name="chk{{iter}}" value="doors" />doors</li>
+      </ul>
+      </div></td>
+        
+        </tr>
+     {% endfor %}
+   </tbody>
+    
+  </table>
+  <button type="submit" class="btn btn-primary" name="btn" value="submit">submit</button>
+  <div><input type="hidden" name="hid" value="{{the_count}}" /></div>
+</form>
+</div>
+{% endblock %}
+</body>

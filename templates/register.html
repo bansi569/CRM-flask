@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+<head>
+  {% block head %}
+     {{ super()}}
+     <script> 
+	function validate(){
+		if(document.getElementById("usr").value == "" || document.getElementById("email").value == ""){
+			window.alert("Enter Email...!! or Enter Username..!");
+			return false;
+		}
+           return true;
+		}
+     </script>
+{% endblock %}
+</head>
+<body>
+{% block body %}
+<div class="container">
+  <h2>Registration form</h2>
+  <form action="/register_user" onsubmit=" return validate()" method="post">
+    <div class="form-group">
+      <label for="uid">User Name:</label>
+      <input type="text" class="form-control" id="usr" placeholder="Enter Username" name="usr">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+    </div>
+     <div class="form-group">
+      <label for="phone">phone number:</label>
+      <input type="text" class="form-control" id="phone" placeholder="Enter phonenumber" name="phone">
+    </div>
+     <div class="form-group">
+      <label for="addr">address:</label>
+      <input type="text" class="form-control" id="addr" placeholder="Enter address" name="addr">
+    </div>
+    <div class="form-group">
+      <label for="city">city:</label>
+      <input type="text" class="form-control" id="city" placeholder="Enter city" name="city">
+    </div>
+    <div class="form-group">
+      <label for="state">state:</label>
+      <input type="text" class="form-control" id="state" placeholder="Enter city" name="state">
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="remember"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+{% endblock %}
+

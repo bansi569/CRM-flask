@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+<head>
+  {% block head %}
+     {{ super()}}
+  {% endblock %}
+</head>
+<body>
+{% block body %}
+<div class="container">
+  <h2>reqirements survey page</h2>
+   <form action="/button_click" method="post" />        
+  <table class="table table-striped" id="mytable">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>productpurchased</th>
+        <th>2way switches?</th>
+        <th>switchesreq</th>
+        <th>dev conn to inverter</th>
+        <
+      </tr>
+    </thead>
+   <tbody>
+     
+     {% for log_row in the_data %} 
+        <tr>
+         <td><input type="text" name="2way" value="{{the_cust}}"/></td>
+           {% for item in log_row %}
+                 <td>{{item}}</td>
+                      
+           {% endfor %}
+         <td><input type="text" name="2way" /></td>
+         <td><input type="text" name="devcount" /></td>
+         <td><input type="text" name="devtoinv" /></td>
+        </tr>
+     {% endfor %}
+   </tbody>
+    
+  </table>
+</form>
+</div>
+{% endblock %}
+</body>
+

@@ -1,0 +1,56 @@
+{% extends 'base.html'%}
+<head>
+  {% block head %}
+     {{ super()}}
+  {% endblock %}
+</head>
+<body>
+{% block body %}
+<div class="container">
+  <h2>reqirements survey page</h2>
+   <form action="/onsubmit_surveyroom" method="post" />        
+  <table class="table table-striped" id="mytable">
+    <thead>
+      <tr>
+        <th>customerId</th>
+        <th>roomname</th>
+        <th>device</th>
+        <th>lastupdated_by</th>
+        <th>createdOn</th>
+        <th>2way switches?</th>
+        <th>power</th>
+        <th>dev conn to inverter</th>
+        
+      </tr>
+    </thead>
+   <tbody>
+     {% set count=0%}
+     {% set index=0 %}
+     {% for log_row in the_data %} 
+         {% set count=loop.index0 %}
+        <tr>
+         <td>{{the_cust}}</td>
+	
+           {% for item in log_row[1:] %}
+              
+                   
+                
+                 <td>{{item}}</td>                      
+           {% endfor %}
+         <td><input type="text" name="way{{count}}" /></td>
+         <td><input type="text" name="power{{count}}" /></td>
+         <td><input type="text" name="devtoinv{{count}}"/></td>
+         
+        </tr>
+     {% endfor %}
+   </tbody>
+    
+  </table>
+  <button type="submit" class="btn btn-primary" name="btn" value="submit">submit</button>
+  <input type="hidden" name="cust" value="{{the_cust}}"/>
+  
+</form>
+</div>
+{% endblock %}
+</body>
+
